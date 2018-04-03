@@ -144,6 +144,6 @@ function jogo(){
 	}
 
 	if(s == 10){
-		setInterval(jogo, 1000/20);
+		setInterval(jogo, 1000/12);
 		}
 }							
