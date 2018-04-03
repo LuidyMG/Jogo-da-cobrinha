@@ -2,6 +2,7 @@
 var morrendo = document.getElementById("morrendo");
 var comendo = document.getElementById("comendo");
 var score = document.getElementById("score");
+var vel = 1;
 
 window.onload = function(){
 	var canvas = document.getElementById("canvas");
@@ -14,27 +15,27 @@ window.onload = function(){
 			case 87:
 				if (velocidadeY != 1) {
 					velocidadeX = 0;
-					velocidadeY = -1;
+					velocidadeY = -vel;
 				}
 
 				break;
 			case 83:
 				if (velocidadeY != -1) {
 					velocidadeX = 0;
-					velocidadeY = 1;
+					velocidadeY = vel;
 				}
 
 				break;
 			case 65:
 				if (velocidadeX != 1) {
-					velocidadeX = -1;
+					velocidadeX = -vel;
 					velocidadeY = 0;
 				}
 
 				break;
 			case 68:
 				if (velocidadeX != -1) {
-					velocidadeX = 1;
+					velocidadeX = vel;
 					velocidadeY = 0;
 				}
 
@@ -42,29 +43,29 @@ window.onload = function(){
 			case 38:
 				if (velocidadeY != 1) {
 					velocidadeX = 0;
-					velocidadeY = -1;
+					velocidadeY = -vel;
 				}
 
 				break;
 			case 40:
 				if (velocidadeY != -1) {
 					velocidadeX = 0;
-					velocidadeY = 1;
+					velocidadeY = vel;
 				}
 
 				break;
 			case 37:
 				if (velocidadeX != 1) {
-					velocidadeX = -1;
+					velocidadeX = -vel;
 					velocidadeY = 0;
 				}
 
 				break;
 			case 39:
 				if (velocidadeX != -1) {
-					velocidadeX = 1;
+					velocidadeX = vel;
 					velocidadeY = 0;
-				};
+				}
 
 				break;
 		}
@@ -89,19 +90,20 @@ function jogo(){
 	posicaoX += velocidadeX;
 	posicaoY += velocidadeY;
 	
-	contexto.fillStyle = "#000080";
+	contexto.fillStyle = "black";
 	contexto.fillRect(0, 0, canvas.width, canvas.height);
 
 	contexto.fillStyle = "white";
 	for (var i = 0; i < cobra.length; i++) {
-		contexto.fillRect(cobra[i].x * grid, cobra[i].y * grid, grid - 1, grid - 1);
+		contexto.fillRect(cobra[i].x * grid, cobra[i].y * grid, grid -1, grid -1);
 		if(velocidadeX != 0 || velocidadeY != 0){
 			if(cobra[i].x == posicaoX && cobra[i].y == posicaoY){
 				contexto.fillStyle = "red";
 				tamanho = 5;
 				morrendo.play();
 				s = 0;
-				score.innerHTML = "Score: " + s;
+				score.innerHTML = "Score: " + s;	
+				window.location.href= "";
 			}
 		}
 	}
@@ -133,7 +135,15 @@ function jogo(){
 		s ++;
 		score.innerHTML = "Score: " + s;
 		comidaX = Math.floor(Math.random() * grid);
-		comidaY = Math.floor(Math.random() * grid);
+		comidaY = Math.floor(Math.random() * grid);		
+		while(comidaX == posicaoX && comidaY == posicaoY){
+			comidaX = Math.floor(Math.random() * grid);
+				comidaY = Math.floor(Math.random() * grid);	
+		}
 		comendo.play();
 	}
-}
+
+	if(s == 10){
+		setInterval(jogo, 1000/20);
+		}
+}							
