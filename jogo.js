@@ -1,10 +1,13 @@
 
 var morrendo = document.getElementById("morrendo");
 var comendo = document.getElementById("comendo");
+var score = document.getElementById("score");
 
 window.onload = function(){
 	var canvas = document.getElementById("canvas");
 	contexto = canvas.getContext("2d");
+	score.innerHTML = "Score: 0";
+
 	document.addEventListener("keydown", function(e){
 		console.log(e.keyCode);
 		switch(e.keyCode){
@@ -79,6 +82,7 @@ var grid = 20;
 var tamanho = 5;
 var comidaX = Math.floor(Math.random() * grid);
 var comidaY = Math.floor(Math.random() * grid);
+var s = 0;
 
 function jogo(){
 	//Cobra
@@ -96,6 +100,8 @@ function jogo(){
 				contexto.fillStyle = "red";
 				tamanho = 5;
 				morrendo.play();
+				s = 0;
+				score.innerHTML = "Score: " + s;
 			}
 		}
 	}
@@ -118,13 +124,14 @@ function jogo(){
 	if(posicaoY > 20){
 		posicaoY = -1;
 	}
-
 	//Comida
 	contexto.fillStyle = "yellow";
 	contexto.fillRect(comidaX * grid, comidaY * grid, grid - 1, grid - 1);
 
 	if (posicaoX == comidaX && posicaoY == comidaY) {
 		tamanho ++;
+		s ++;
+		score.innerHTML = "Score: " + s;
 		comidaX = Math.floor(Math.random() * grid);
 		comidaY = Math.floor(Math.random() * grid);
 		comendo.play();
