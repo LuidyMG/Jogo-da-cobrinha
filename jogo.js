@@ -1,7 +1,10 @@
+
+var morrendo = document.getElementById("morrendo");
+var comendo = document.getElementById("comendo");
+
 window.onload = function(){
 	var canvas = document.getElementById("canvas");
 	contexto = canvas.getContext("2d");
-
 	document.addEventListener("keydown", function(e){
 		console.log(e.keyCode);
 		switch(e.keyCode){
@@ -92,6 +95,7 @@ function jogo(){
 			if(cobra[i].x == posicaoX && cobra[i].y == posicaoY){
 				contexto.fillStyle = "red";
 				tamanho = 5;
+				morrendo.play();
 			}
 		}
 	}
@@ -123,5 +127,6 @@ function jogo(){
 		tamanho ++;
 		comidaX = Math.floor(Math.random() * grid);
 		comidaY = Math.floor(Math.random() * grid);
+		comendo.play();
 	}
 }
