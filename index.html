@@ -6,7 +6,19 @@
 	<link rel="stylesheet" type="text/css" href="jogo.css">
 </head>
 <body>
-	<center><canvas id="canvas" width="400" height="400"></canvas></center>
+	<center>
+		<canvas id="canvas" width="400" height="400"></canvas>
+		<br />
+		<h1 id="score"></h1>
+	</center>
+	<audio id="morrendo">
+		<source src="sons/morrendo.mp3" type="audio/mpeg">
+		<source src="sons/morrendo.mp3" type="audio/ogg">
+	</audio>
+	<audio id="comendo">
+		<source src="sons/comendo.mp3" type="audio/mpeg">
+		<source src="sons/comendo.mp3" type="audio/ogg">
+	</audio>
 	<script type="text/javascript" src="jogo.js"></script>
 </body>
 </html>
