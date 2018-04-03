@@ -32,14 +32,14 @@ window.onload = function(){
 }
 
 var cobra = [];
-var comidaX = 5;
-var comidaY = 5;
 var posicaoX = 10;
 var posicaoY = 10;
 var velocidadeX = 0;
 var velocidadeY = 0;
 var grid = 20;
 var tamanho = 5;
+var comidaX = Math.floor(Math.random() * grid);
+var comidaY = Math.floor(Math.random() * grid);
 
 function jogo(){
 	//Cobra
@@ -70,13 +70,13 @@ function jogo(){
 		posicaoX = grid;
 	}
 	if(posicaoX > 20){
-		posicaoY = 0;
+		posicaoX = -1;
 	}
 	if(posicaoY < 0){
 		posicaoY = grid;
 	}
 	if(posicaoY > 20){
-		posicaoY = 0;
+		posicaoY = -1;
 	}
 
 	//Comida
