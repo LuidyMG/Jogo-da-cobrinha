@@ -6,23 +6,59 @@ window.onload = function(){
 		console.log(e.keyCode);
 		switch(e.keyCode){
 			case 87:
-				velocidadeX = 0;
-				velocidadeY = -1;
+				if (velocidadeY != 1) {
+					velocidadeX = 0;
+					velocidadeY = -1;
+				}
 
 				break;
 			case 83:
-				velocidadeX = 0;
-				velocidadeY = 1;
+				if (velocidadeY != -1) {
+					velocidadeX = 0;
+					velocidadeY = 1;
+				}
 
 				break;
 			case 65:
-				velocidadeX = -1;
-				velocidadeY = 0;
+				if (velocidadeX != 1) {
+					velocidadeX = -1;
+					velocidadeY = 0;
+				}
 
 				break;
 			case 68:
-				velocidadeX = 1;
-				velocidadeY = 0;
+				if (velocidadeX != -1) {
+					velocidadeX = 1;
+					velocidadeY = 0;
+				}
+
+				break;
+			case 38:
+				if (velocidadeY != 1) {
+					velocidadeX = 0;
+					velocidadeY = -1;
+				}
+
+				break;
+			case 40:
+				if (velocidadeY != -1) {
+					velocidadeX = 0;
+					velocidadeY = 1;
+				}
+
+				break;
+			case 37:
+				if (velocidadeX != 1) {
+					velocidadeX = -1;
+					velocidadeY = 0;
+				}
+
+				break;
+			case 39:
+				if (velocidadeX != -1) {
+					velocidadeX = 1;
+					velocidadeY = 0;
+				};
 
 				break;
 		}
@@ -54,8 +90,8 @@ function jogo(){
 		contexto.fillRect(cobra[i].x * grid, cobra[i].y * grid, grid - 1, grid - 1);
 		if(velocidadeX != 0 || velocidadeY != 0){
 			if(cobra[i].x == posicaoX && cobra[i].y == posicaoY){
-				alert("AAAAA morreu otário!!!");
-				window.location.href = "";
+				contexto.fillStyle = "red";
+				tamanho = 5;
 			}
 		}
 	}
