@@ -1,8 +1,9 @@
-
+//By luidy 3°Informática
 var morrendo = document.getElementById("morrendo");
 var comendo = document.getElementById("comendo");
 var score = document.getElementById("score");
 var vel = 1;
+var oi = 0;
 
 window.onload = function(){
 	var canvas = document.getElementById("canvas");
@@ -138,12 +139,16 @@ function jogo(){
 		comidaY = Math.floor(Math.random() * grid);		
 		while(comidaX == posicaoX && comidaY == posicaoY){
 			comidaX = Math.floor(Math.random() * grid);
-				comidaY = Math.floor(Math.random() * grid);	
+			comidaY = Math.floor(Math.random() * grid);	
 		}
 		comendo.play();
 	}
-
-	if(s == 10){
-		setInterval(jogo, 1000/12);
-		}
+	if(s == 10 && oi == 0){
+		setInterval(jogo, 1000*2);
+		oi = 1;
+	}
+	if(s == 20 && oi == 1){
+		setInterval(jogo, 1000);
+		oi = 0;
+	}
 }							
